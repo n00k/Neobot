@@ -1,0 +1,10 @@
+./petpetpark.sh:5: no such file or directory: 
+./functions.sh:.:1: no such file or directory: ./config.sh
+Error retrieving URL: unknown option referer=http://www.neopets.com/petpetpark/daily.phtml
+Error retrieving URL: unknown option output=index.html
+./checklogin.sh:9: command not found: -i
+Error retrieving URL: unknown option referer=http://www.neopets.com/petpetpark/celebration.phtml
+Error retrieving URL: unknown option output=petpetpark.html
+Error retrieving URL: unknown option post-data=go=1
+./petpetpark.sh:11: no such file or directory: 
+./petpetpark.sh:13: command not found: -f

@@ -1,0 +1,65 @@
+#####################
+#  Neopet Section   #
+#####################
+
+# username and password - I have my own so I won't be trying to get yours - nothing works if it can't log in
+username=your_username_here
+password=your_password_here
+
+# list of pets that should be give a chance to fish
+# in the order they should fish, the last pet will be active afterward
+# the pet names are case sensitive
+# if you don't have 4 pets, delete the quotes for the unneeded entries
+# i.e. for 2 pets fishpets=("pet1" "pet2") for 1 pet fishpets=("petName")
+fishpets=("Your_First_Pet" "Your_Second_Pet" "Your_Third_Pet" "Another_Pet")
+
+# the pet that should receive any blessing from Coltzan
+coltzanpet="Your_Favorite_Pet"
+
+# the pet that should explore the Tomb of Geraptiku
+tombpet="Your_Adventuresome_Pet"
+
+# the pet that should visit the Snowager
+snowagerpet="Your_Bravest_Pet"
+
+# Stocks that meet or exceed this percentage should be sold
+# This is the change in price, expressed as a percentage of the purchase price
+# 0% means no change, so 300% gain means the current price is 4 times the purchase price.
+# omit the % sign when setting this value
+stockthresh=300
+
+########################
+# Local System Section #
+########################
+
+# file to hold session information and authentication tokens
+# may be an absolute path, or relative to the location of the scripts
+# must be createable/writible by the user running the scripts
+cookiefile="neocookies"
+
+# status dir must exist, and be writable by the user running the scripts
+# it may be an absolute path
+# if relative, it will be relative to the location of the script files
+statusdir="wormstatus"
+
+# status file must be writable by the user running the scripts
+# if it does not exist, will attempt to create it
+# may be an absolute path, or relative to the location of the scripts
+statusfile="status.html"
+
+# temporary file to use when stashing inventory in SDB
+# may be an absolute path, or relative to the location of the scripts
+invpostfile="inventory.post"
+
+# Path may not be available to cron jobs, 
+# so adjust the absolute path to each command as necessary
+DATE=/bin/date
+RM=/bin/rm
+GREP=/usr/bin/grep
+SED=/usr/bin/sed
+SLEEP=/bin/sleep
+WGET=/usr/local/bin/wget
+TR=/usr/bin/tr
+CUT=/usr/bin/cut
+
+export DATE RM GREP SED SLEEP WGET TR CUT invpostfile statusfile statusdir cookiefile stockthresh snowagerpet tombpet coltzanpet fishpets

@@ -1,0 +1,66 @@
+This software is provided without warranty of any kind.  It may work or it may cause your computer to catch fire ... try it and see, I suppose.
+
+These scripts are written for zsh - if you don't use zsh, it may or may not work (see above) - I don't plan to port it to other shells or operating systems, and absolutely not Windoze.
+
+You should copy all of the files to the same directory, then edit config.sh - the available settings are documented there.
+
+the following files should be included
+config.sh.sample - configuration settings - edit this file then save it as config.sh
+functions.sh - common functions shared by all other scripts
+login.sh - login to neopets
+checklogin.sh - check if you are currently logged in - login if no
+dailies.sh - run the scripts that only run once per day that also don't care what time they run
+altador.sh - get your free gift from the King - must have completed altador adventure
+anchor.sh - protect Krawk island from the squid
+coltzan.sh - see if Coltzan's ghost is generous
+fish.sh - take your pets fishing
+fruit.sh - a little desert slot machine
+interest.sh - collect your interest from the bank
+inventory.sh - stow everything you are carrying in the SDB
+jelly.sh - grab some jelly from the pil
+market.sh - get current stock prices - only needed if you plan to keep history on all stocks
+obsidian.sh - snag a piece of obsidian from the quarry
+omelette.sh - get a slice of the big one
+petpetpark.sh - get the daily freebie from the park
+portfolio.sh - check current price of stocks you own - sell if price is high
+shore.sh - visit the forgotten shore and see what you can get - must have completed the map
+snow.sh - visit the Snowagers cave and try to snag something
+springs.sh - visit the healing springs
+tomb.sh - explore the tomb of Geraptiku
+worms.sh - collect the lantern, 10 worms, scrap metal, gears, and moltite
+
+requirements: 
+	must have - nothing works without:
+	zsh
+	wget
+
+	should have - most of the scripts like:
+	sed
+
+	probably have - your distribution probably already has:
+	sleep
+	date 	
+	cut
+	tr
+
+Running:
+	You can execute any of the scripts manually.  If you choose to run the dailies.sh, take a look inside so you know which other scripts it runs.
+
+	The cron entries I use:
+#	Run worms.sh every minute during the hours 2,5, and 6am - this usually completes the worms
+*       2,5,6   *       *       *       /home/me/neopets/worms.sh
+#	Run worms.sh every 5 minutes the rest of the day to get scrap and gears
+*/5     7-23    *       *       *       /home/me/neopets/worms.sh
+#	Take a market snapshot every half hour
+4,36    *       *       *       *       /home/me/neopets/market.sh 
+3	Check portfolio/sell once an hour
+0       *       *       *       *       /home/me/neopets/portfolio.sh 
+3	dump inventory to SDB just before midnight NST
+55      0       *       *       *       /home/me/neopets/inventory.sh       
+#	clear the wormstats at midnight NST
+0       1       *       *       *       /home/me/neopets/worms.sh clearstats
+#	visit the snowager - he sleeps at 6-7am, 2-3pm, 10-11pm NST
+23      7,15,23 *       *       *       /home/me/neopets/snow.sh
+#	run the once daily scripts in the early morning
+15      5       *       *       *       /home/me/neopets/dailies.sh
+
